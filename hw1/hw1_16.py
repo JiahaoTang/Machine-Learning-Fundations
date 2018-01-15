@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 def sign(x):
 	if(x > 0):
@@ -16,8 +17,10 @@ def isFinished(w, X, Y):
 def main():
 	# Read data from database
 	data = np.loadtxt('hw1_15_train.txt')
-	#Initliazed a variable to store summary of every update times.
+	#Initialized a variable to store summary of every update times.
 	updateTimesSum = 0
+	#Initialized a list to store the update times.
+	updateTimes = []
 	#Iterate for 2000 times
 	for time in range(2000):
 		np.random.shuffle(data)
@@ -46,11 +49,13 @@ def main():
 				# w = w + x * y (update weight vector)
 				w += inputX[i] * inputY[i] 
 				step += 1
-
+		updateTimes.append(step)
 		updateTimesSum += step
 
 
 	print("The average update time is {}".format(updateTimesSum / 2000))
-
+	num = len(set(updateTimes))
+	plt.hist(updateTimes, bins=num)
+	plt.show()
 if __name__ == "__main__":
 	main()

@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 # data = np.loadtxt('hw1_15_train.txt')
 # inputX = np.ndarray((400, 5))
@@ -12,8 +13,7 @@ import numpy as np
 # 	inputX[i][4] = data[i][3]
 # 	inputY[i] = data[i][4]
 # print(inputX)
-x = np.ndarray((5))
-for i in range(5):
-	x[i] = i
-print(np.mean(x))
-
+list = [1, 2, 3, 5, 3, 3, 3, 2, 5]
+list.append(50)
+plt.hist(list, bins=50, color='g')
+plt.show()
